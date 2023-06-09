@@ -39,7 +39,7 @@ const NavBar = ({ blurValue, setblurValue, visible, setVisible }) => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <Link className="nav-link fw-bold active" to="/" onClick={navLinkChange} >Hot sales</Link>
+                        <Link className="nav-link fw-bold active" to="/react_simple_ecommerce" onClick={navLinkChange} >Hot sales</Link>
                         <Link className="nav-link fw-bold" to='/electronics' onClick={navLinkChange} >Electronics</Link>
                         <Link className="nav-link fw-bold" to="/fashion" onClick={navLinkChange}>Fashion</Link>
                         <Link className="nav-link fw-bold" to="/foodsdrinks" onClick={navLinkChange}>Foods & Drinks</Link>

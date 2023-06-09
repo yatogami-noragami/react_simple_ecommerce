@@ -45,8 +45,9 @@ function App() {
       <SearchBar visible={visible} setVisible={setVisible} setblurValue={setblurValue}></SearchBar>
       <Router>
         <NavBar blurValue={blurValue} setblurValue={setblurValue} visible={visible} setVisible={setVisible}></NavBar>
+
         <Routes>
-          <Route path='/' element={<HotSales blurValue={blurValue} />} />
+          <Route path='/react_simple_ecommerce' element={<HotSales blurValue={blurValue} />} />
           <Route path='/electronics' element={<Electronics blurValue={blurValue} />} />
 
 
