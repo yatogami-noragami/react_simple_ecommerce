@@ -46,12 +46,12 @@ function App() {
       <Router>
         <NavBar blurValue={blurValue} setblurValue={setblurValue} visible={visible} setVisible={setVisible}></NavBar>
         <Routes>
-          <Route exact path='/' element={<HotSales blurValue={blurValue} />} />
-          <Route exact path='/electronics' element={<Electronics blurValue={blurValue} />} />
+          <Route path='/' element={<HotSales blurValue={blurValue} />} />
+          <Route path='/electronics' element={<Electronics blurValue={blurValue} />} />
 
 
           {allItems.map(item => (
-            <Route key={item.id} exact path={`/items/${item.id}`} element={<ItemInfo blurValue={blurValue}
+            <Route key={item.id} path={`/items/${item.id}`} element={<ItemInfo blurValue={blurValue}
               item={item} />} />
           ))}
 
