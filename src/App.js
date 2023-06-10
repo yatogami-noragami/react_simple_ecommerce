@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useState } from 'react';
 import './App.css'
 import NavBar from './components/navBar';
@@ -9,6 +9,7 @@ import Electronics from './components/Electronics';
 import ItemInfo from './components/iteminfo';
 
 import SearchBar from './components/searchBar';
+import CartBtn from './components/cartbtn';
 import BttBtn from './components/backtotopbtn';
 
 import p1 from './image/p1.png'
@@ -39,25 +40,36 @@ function App() {
     { id: 10, price: 40000, rating: 3, image: p10 },
 
   ]
+
+  const [cartItem, setCartItem] = useState(0)
+  const [cartItemId, setCartItemId] = useState([])
+  const [imgSrc, setImgSrc] = useState('')
   return (
     <div className="App container">
 
       <SearchBar visible={visible} setVisible={setVisible} setblurValue={setblurValue}></SearchBar>
-      <Router>
+      <BrowserRouter>
         <NavBar blurValue={blurValue} setblurValue={setblurValue} visible={visible} setVisible={setVisible}></NavBar>
 
         <Routes>
-          <Route path='/react_simple_ecommerce' element={<HotSales blurValue={blurValue} />} />
-          <Route path='/electronics' element={<Electronics blurValue={blurValue} />} />
+          <Route path='/react_simple_ecommerce' element={<HotSales blurValue={blurValue} cartItem={cartItem}
+            setCartItem={setCartItem} cartItemId={cartItemId} setCartItemId={setCartItemId} allItems={allItems} />} />
+          <Route path='/electronics' element={<Electronics blurValue={blurValue} cartItem={cartItem}
+            setCartItem={setCartItem} cartItemId={cartItemId} setCartItemId={setCartItemId} allItems={allItems} />} />
 
 
           {allItems.map(item => (
             <Route key={item.id} path={`/items/${item.id}`} element={<ItemInfo blurValue={blurValue}
-              item={item} />} />
+              item={item} imgSrc={imgSrc} setImgSrc={setImgSrc} cartItem={cartItem} setCartItem={setCartItem}
+              cartItemId={cartItemId} setCartItemId={setCartItemId} />} />
           ))}
 
         </Routes>
-      </Router>
+        <CartBtn cartItem={cartItem} setCartItem={setCartItem} cartItemId={cartItemId}
+          setCartItemId={setCartItemId} allItems={allItems} imgSrc={imgSrc} setImgSrc={setImgSrc}></CartBtn>
+      </BrowserRouter>
+
+
 
       <BttBtn></BttBtn>
 

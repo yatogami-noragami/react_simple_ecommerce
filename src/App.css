@@ -9,12 +9,11 @@ body {
 
 body {
   background-color: black;
-  /* height: 2000px; */
 }
 
-.ParentCon {
+/* .ParentCon {
   height: 2000px;
-}
+} */
 
 .nav-link {
   color: darkred;
@@ -100,7 +99,17 @@ body {
   transform: scale(0.7, 0.7);
 }
 
+#cartBtn {
+  position: fixed;
+  top: 20%;
+  left: 95%;
+  box-shadow: 0 0 50px 15px #48abe0;
+  transition: all 300ms ease-in-out;
+}
 
+#cartBtn:hover {
+  box-shadow: 0 0 50px 15px #ffff00;
+}
 
 #bttbtn {
   position: fixed;
@@ -113,10 +122,23 @@ body {
   transform: scale(1.3, 1.3);
 }
 
+@media only screen and (max-width: 991px) {
+  #cartBtn {
+    left: 90%;
+    box-shadow: none;
+  }
+
+}
 
 @media only screen and (max-width: 576px) {
   .itemsCon h5 {
     font-size: 12px;
+  }
+
+  #cartBtn {
+    top: 20%;
+    left: 85%;
+    box-shadow: none;
   }
 
   #bttbtn {

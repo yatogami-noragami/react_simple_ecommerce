@@ -1,8 +1,5 @@
 import grayBg from './..//image/grayBg.jpg'
-import { useState } from 'react';
-const ItemInfo = ({ item, blurValue }) => {
-    const [imgSrc, setImgSrc] = useState(item.image)
-
+const ItemInfo = ({ item, blurValue, setImgSrc, cartItem, setCartItem, cartItemId, setCartItemId }) => {
     const imgBorderChange = (event) => {
         const images = document.getElementsByClassName('grayBg');
         const imagesArray = Array.from(images);
@@ -23,6 +20,11 @@ const ItemInfo = ({ item, blurValue }) => {
         <i className="fa-solid fa-star text-light fw-bold ms-1" key={index}></i>
     ));
 
+    const addToCart = (event) => {
+        setCartItem(cartItem + 1)
+        setCartItemId([...cartItemId, event.target.id])
+    }
+
     return <>
         <div className='container p-5 mt-5'>
             <div className="row">
@@ -30,7 +32,7 @@ const ItemInfo = ({ item, blurValue }) => {
                     <h4 className=" text-light text-center">Item {item.id}</h4>
                     <div className="row mt-5">
                         <div className='col-md-8'>
-                            <img src={imgSrc} alt="" className=" img-fluid rounded w-75" id='itemImg' />
+                            <img src={item.image} alt="" className=" img-fluid rounded w-75" id='itemImg' />
                         </div>
 
                         <div className="col-md-4 d-md-block d-none">
@@ -75,7 +77,7 @@ const ItemInfo = ({ item, blurValue }) => {
                             {noStars}
                         </div>
 
-                        <button className='btn btn-primary'>add to cart</button>
+                        <button className='btn btn-primary' id={item.id} onClick={addToCart}>add to cart</button>
                     </div>
 
                     <div className='border border-secondary p-4 rounded mt-4'>
