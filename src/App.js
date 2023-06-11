@@ -4,7 +4,6 @@ import './App.css'
 import NavBar from './components/navBar';
 
 import HotSales from './components/Hotsales';
-import Electronics from './components/Electronics';
 
 import ItemInfo from './components/iteminfo';
 
@@ -45,6 +44,7 @@ function App() {
   const [cartItemId, setCartItemId] = useState([])
   const [imgSrc, setImgSrc] = useState('')
   const [xCount, setXCount] = useState(1)
+  const [cartValue, setCartValue] = useState(0)
   return (
     <div className="App container">
 
@@ -55,22 +55,20 @@ function App() {
         <Routes>
           <Route path='/react_simple_ecommerce' element={<HotSales blurValue={blurValue} cartItem={cartItem}
             setCartItem={setCartItem} cartItemId={cartItemId} setCartItemId={setCartItemId} allItems={allItems}
-            setXCount={setXCount} />} />
-
-          <Route path='/electronics' element={<Electronics blurValue={blurValue} cartItem={cartItem}
-            setCartItem={setCartItem} cartItemId={cartItemId} setCartItemId={setCartItemId} allItems={allItems}
-            setXCount={setXCount} />} />
+            setXCount={setXCount} cartValue={cartValue} setCartValue={setCartValue} />} />
 
 
           {allItems.map(item => (
             <Route key={item.id} path={`/items/${item.id}`} element={<ItemInfo blurValue={blurValue}
               item={item} imgSrc={imgSrc} setImgSrc={setImgSrc} cartItem={cartItem} setCartItem={setCartItem}
-              cartItemId={cartItemId} setCartItemId={setCartItemId} xCount={xCount} setXCount={setXCount} />} />
+              cartItemId={cartItemId} setCartItemId={setCartItemId} xCount={xCount} setXCount={setXCount}
+              cartValue={cartValue} setCartValue={setCartValue} />} />
           ))}
 
         </Routes>
         <CartBtn cartItem={cartItem} setCartItem={setCartItem} cartItemId={cartItemId}
-          setCartItemId={setCartItemId} allItems={allItems} imgSrc={imgSrc} setImgSrc={setImgSrc} setXCount={setXCount}></CartBtn>
+          setCartItemId={setCartItemId} allItems={allItems} imgSrc={imgSrc} setImgSrc={setImgSrc} setXCount={setXCount}
+          cartValue={cartValue} setCartValue={setCartValue}></CartBtn>
       </BrowserRouter>
 
 

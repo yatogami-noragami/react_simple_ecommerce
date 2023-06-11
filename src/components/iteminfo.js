@@ -1,5 +1,6 @@
 import grayBg from './..//image/grayBg.jpg'
-const ItemInfo = ({ item, blurValue, setImgSrc, cartItem, setCartItem, cartItemId, setCartItemId, xCount, setXCount }) => {
+const ItemInfo = ({ item, blurValue, setImgSrc, cartItem, setCartItem, cartItemId, setCartItemId, xCount, setXCount
+    , cartValue, setCartValue }) => {
     const imgBorderChange = (event) => {
         const images = document.getElementsByClassName('grayBg');
         const imagesArray = Array.from(images);
@@ -20,10 +21,11 @@ const ItemInfo = ({ item, blurValue, setImgSrc, cartItem, setCartItem, cartItemI
         <i className="fa-solid fa-star text-light fw-bold ms-1" key={index}></i>
     ));
 
-    const addToCart = (event) => {
+    const addToCart = () => {
         setCartItem(cartItem + xCount)
+        setCartValue(cartValue + (item.price * xCount))
         for (let i = 0; i < xCount; i++) {
-            setCartItemId(prevCartItemId => [...prevCartItemId, event.target.id]);
+            setCartItemId(prevCartItemId => [...prevCartItemId, item.id]);
         }
     }
 

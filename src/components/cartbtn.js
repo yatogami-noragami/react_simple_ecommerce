@@ -2,11 +2,13 @@
 import { Link } from "react-router-dom"
 
 
-const CartBtn = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems, imgSrc, setImgSrc, setXCount }) => {
+const CartBtn = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems, imgSrc, setImgSrc, setXCount,
+    cartValue, setCartValue }) => {
 
     const cartItemClear = () => {
         setCartItem(0)
         setCartItemId([])
+        setCartValue(0)
     }
 
     cartItemId = cartItemId.map(str => parseInt(str));
@@ -16,6 +18,8 @@ const CartBtn = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems, i
         var id = parseInt(event.currentTarget.id)
         setCartItem(cartItem - 1)
         setCartItemId(cartItemId.filter((value, index) => !(value === id && index === cartItemId.indexOf(id))))
+        var value = allItems.filter(item => item.id === parseInt(event.currentTarget.id))
+        setCartValue(cartValue - value[0].price)
     }
 
     const closeCartDiv = () => {
@@ -34,8 +38,9 @@ const CartBtn = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems, i
                             <div className="col-2">
                                 <img src={item.image} alt="" className=" img-fluid" />
                             </div>
-                            <div className="col-10 d-flex justify-content-between align-items-center">
+                            <div className="col-10  d-flex justify-content-between align-items-center">
                                 <h6 className=" ">{`Item ${item.id}`}</h6>
+                                <h6 className=" ">Price - {item.price} ks</h6>
                             </div>
                         </div>
                     </Link>
@@ -48,8 +53,10 @@ const CartBtn = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems, i
                 </div>
             </div>
         </div>
-
     ))
+
+
+
     return <>
         <button className="btn border-warning rounded text-warning" data-bs-toggle="offcanvas" data-bs-target="#cartDiv" id="cartBtn">
             <i className="fa-solid fa-cart-shopping fs-5"></i>
@@ -67,7 +74,7 @@ const CartBtn = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems, i
             <div className="offcanvas-body bg-dark position-relative">
                 <h6 className=" text-light text-center">{cartItem} item here</h6>
                 {items}
-
+                <h6 className=" text-warning text-center">Total - {cartValue} ks</h6>
                 <button onClick={cartItemClear} className="btn btn-light d-block mx-auto w-100  fw-bold ">clear all</button>
             </div>
 

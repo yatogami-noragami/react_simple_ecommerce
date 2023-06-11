@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom'
 
-const Items = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems, setXCount }) => {
+const Items = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems, setXCount, cartValue, setCartValue }) => {
 
-    const itemsArray = allItems.filter(item => item.id <= 5)
+    const itemsArray = allItems.filter(item => item.id <= 10)
 
     const cartItemChange = (event) => {
         setCartItem(cartItem + 1)
         setCartItemId([...cartItemId, event.target.id])
+        var value = allItems.filter(item => item.id === parseInt(event.target.id))
+        setCartValue(cartValue + value[0].price)
     }
 
     const itemCLick = () => {
