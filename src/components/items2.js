@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-const Items = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems }) => {
+const Items = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems, setXCount }) => {
 
     const itemsArray = allItems.filter(item => item.id <= 10 && item.id > 5)
 
@@ -9,12 +9,16 @@ const Items = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems }) =
         setCartItemId([...cartItemId, event.target.id])
     }
 
+    const itemCLick = () => {
+        setXCount(1)
+    }
+
     return <>
         <div className="row mt-5">
 
             {itemsArray.map((item, index) => (
                 <div className='itemsCon position-relative col-lg-3 col-md-4 col-6 my-5 ' key={index}>
-                    <Link to={`/items/${index + 6}`}>
+                    <Link to={`/items/${index + 6}`} onClick={itemCLick}>
                         <img src={item.image} alt='p1' className=' img-fluid p-4 mb-5' />
                         <div className=' w-100'>
                             <h5 className='text-light text-center'>Item {index + 6}</h5>

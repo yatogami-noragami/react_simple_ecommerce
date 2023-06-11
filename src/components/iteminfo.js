@@ -1,5 +1,5 @@
 import grayBg from './..//image/grayBg.jpg'
-const ItemInfo = ({ item, blurValue, setImgSrc, cartItem, setCartItem, cartItemId, setCartItemId }) => {
+const ItemInfo = ({ item, blurValue, setImgSrc, cartItem, setCartItem, cartItemId, setCartItemId, xCount, setXCount }) => {
     const imgBorderChange = (event) => {
         const images = document.getElementsByClassName('grayBg');
         const imagesArray = Array.from(images);
@@ -9,7 +9,7 @@ const ItemInfo = ({ item, blurValue, setImgSrc, cartItem, setCartItem, cartItemI
 
         const clickedImg = event.target
         clickedImg.classList.add('border')
-        setImgSrc(clickedImg.getAttribute('src'))
+        document.getElementById('itemImg').src = clickedImg.getAttribute('src')
     }
 
     const stars = Array.from({ length: item.rating }, (_, index) => (
@@ -21,18 +21,34 @@ const ItemInfo = ({ item, blurValue, setImgSrc, cartItem, setCartItem, cartItemI
     ));
 
     const addToCart = (event) => {
-        setCartItem(cartItem + 1)
-        setCartItemId([...cartItemId, event.target.id])
+        setCartItem(cartItem + xCount)
+        for (let i = 0; i < xCount; i++) {
+            setCartItemId(prevCartItemId => [...prevCartItemId, event.target.id]);
+        }
+    }
+
+    const xCountDe = () => {
+        setXCount(xCount - 1)
+        if (xCount <= 1) {
+            setXCount(1)
+        }
+    }
+
+    const xCountIn = () => {
+        setXCount(xCount + 1)
+        if (xCount >= 5) {
+            setXCount(5)
+        }
     }
 
     return <>
         <div className='container p-5 mt-5'>
             <div className="row">
-                <div style={{ filter: `blur(${blurValue}px)` }} className=" p-lg-5 col-lg-8 offset-lg-2">
+                <div style={{ filter: `blur(${blurValue}px)` }} className=" p-lg-5 p-0 col-lg-8 offset-lg-2">
                     <h4 className=" text-light text-center">Item {item.id}</h4>
                     <div className="row mt-5">
                         <div className='col-md-8'>
-                            <img src={item.image} alt="" className=" img-fluid rounded w-75" id='itemImg' />
+                            <img src={item.image} alt="" className=" img-fluid d-block mx-auto rounded w-75" id='itemImg' />
                         </div>
 
                         <div className="col-md-4 d-md-block d-none">
@@ -80,12 +96,22 @@ const ItemInfo = ({ item, blurValue, setImgSrc, cartItem, setCartItem, cartItemI
                         <button className='btn btn-primary' id={item.id} onClick={addToCart}>add to cart</button>
                     </div>
 
+                    <div className=' mt-3 d-flex justify-content-end align-items-start px-md-5'>
+                        <button className='btn border-0' onClick={xCountDe} id={`xCountDeItem${item.id}`}>
+                            <i className="fa-regular fa-square-minus text-light fs-4 "></i>
+                        </button>
+                        <p className=' text-light fs-4 '>{xCount}</p>
+                        <button className='btn border-0' onClick={xCountIn} id={`xCountInItem${item.id}`}>
+                            <i className="fa-regular fa-square-plus text-light fs-4 "></i>
+                        </button>
+                    </div>
+
                     <div className='border border-secondary p-4 rounded mt-4'>
                         <h6 className=' text-light'>Details - </h6>
                         <h6 className=' text-light'>Details - </h6>
                         <h6 className=' text-light'>Details - </h6>
                         <p className=' mt-4 text-secondary'><span className='text-light'>Description - </span>
-                            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+                            It is a long established fact that a reader will be distracted by the readable content of a page when looking .
                         </p>
                     </div>
 

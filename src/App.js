@@ -44,6 +44,7 @@ function App() {
   const [cartItem, setCartItem] = useState(0)
   const [cartItemId, setCartItemId] = useState([])
   const [imgSrc, setImgSrc] = useState('')
+  const [xCount, setXCount] = useState(1)
   return (
     <div className="App container">
 
@@ -53,20 +54,23 @@ function App() {
 
         <Routes>
           <Route path='/react_simple_ecommerce' element={<HotSales blurValue={blurValue} cartItem={cartItem}
-            setCartItem={setCartItem} cartItemId={cartItemId} setCartItemId={setCartItemId} allItems={allItems} />} />
+            setCartItem={setCartItem} cartItemId={cartItemId} setCartItemId={setCartItemId} allItems={allItems}
+            setXCount={setXCount} />} />
+
           <Route path='/electronics' element={<Electronics blurValue={blurValue} cartItem={cartItem}
-            setCartItem={setCartItem} cartItemId={cartItemId} setCartItemId={setCartItemId} allItems={allItems} />} />
+            setCartItem={setCartItem} cartItemId={cartItemId} setCartItemId={setCartItemId} allItems={allItems}
+            setXCount={setXCount} />} />
 
 
           {allItems.map(item => (
             <Route key={item.id} path={`/items/${item.id}`} element={<ItemInfo blurValue={blurValue}
               item={item} imgSrc={imgSrc} setImgSrc={setImgSrc} cartItem={cartItem} setCartItem={setCartItem}
-              cartItemId={cartItemId} setCartItemId={setCartItemId} />} />
+              cartItemId={cartItemId} setCartItemId={setCartItemId} xCount={xCount} setXCount={setXCount} />} />
           ))}
 
         </Routes>
         <CartBtn cartItem={cartItem} setCartItem={setCartItem} cartItemId={cartItemId}
-          setCartItemId={setCartItemId} allItems={allItems} imgSrc={imgSrc} setImgSrc={setImgSrc}></CartBtn>
+          setCartItemId={setCartItemId} allItems={allItems} imgSrc={imgSrc} setImgSrc={setImgSrc} setXCount={setXCount}></CartBtn>
       </BrowserRouter>
 
 

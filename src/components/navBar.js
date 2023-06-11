@@ -29,7 +29,10 @@ const NavBar = ({ blurValue, setblurValue, visible, setVisible }) => {
         navLinksArray.forEach((navLink) => {
             navLink.classList.remove('active')
         });
-        document.getElementById("navbar-toggler").click()
+        if (window.innerWidth <= 991) {
+            document.getElementById("navbar-toggler").click()
+        }
+
     }
 
     return <>
