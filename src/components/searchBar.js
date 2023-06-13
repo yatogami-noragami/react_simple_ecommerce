@@ -9,7 +9,7 @@ const SearchBar = ({ visible, setVisible, setblurValue }) => {
 
     return <>
         {visible && (
-            <form >
+            <form id="searchForm">
                 <div className=" input-group mt-5 z-3">
                     <input
                         type="search"

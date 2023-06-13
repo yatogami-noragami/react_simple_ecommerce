@@ -39,7 +39,7 @@ const CartBtn = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems, i
                                 <img src={item.image} alt="" className=" img-fluid" />
                             </div>
                             <div className="col-10  d-flex justify-content-between align-items-center">
-                                <h6 className=" ">{`Item ${item.id}`}</h6>
+                                <h6 className=" ">{item.name}</h6>
                                 <h6 className=" ">Price - {item.price} ks</h6>
                             </div>
                         </div>

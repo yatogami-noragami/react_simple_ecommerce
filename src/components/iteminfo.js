@@ -47,7 +47,7 @@ const ItemInfo = ({ item, blurValue, setImgSrc, cartItem, setCartItem, cartItemI
         <div className='container p-5 mt-5'>
             <div className="row">
                 <div style={{ filter: `blur(${blurValue}px)` }} className=" p-lg-5 p-0 col-lg-8 offset-lg-2">
-                    <h4 className=" text-light text-center">Item {item.id}</h4>
+                    <h4 className=" text-light text-center">{item.name}</h4>
                     <div className="row mt-5">
                         <div className='col-md-8'>
                             <img src={item.image} alt="" className=" img-fluid d-block mx-auto rounded w-75" id='itemImg' />

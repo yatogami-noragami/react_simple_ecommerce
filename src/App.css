@@ -54,8 +54,11 @@ body {
   transform: scale(0.7, 0.7);
 }
 
-.itemsCon:hover h5 {
+.itemsCon h5 {
   transition: all 300ms ease-in-out;
+}
+
+.itemsCon:hover h5 {
   display: none;
 }
 

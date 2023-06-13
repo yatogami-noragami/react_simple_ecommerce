@@ -23,7 +23,7 @@ const Items = ({ cartItem, setCartItem, cartItemId, setCartItemId, allItems, set
                     <Link to={`/items/${index + 1}`} onClick={itemCLick}>
                         <img src={item.image} alt='p1' className=' img-fluid p-4 mb-5' />
                         <div className=' w-100'>
-                            <h5 className='text-light text-center'>Item {index + 1}</h5>
+                            <h5 className='text-light text-center'>{item.name}</h5>
 
                             <h5 className=' text-warning text-decoration-underline mt-3'>{item.price} ks</h5>
                         </div>

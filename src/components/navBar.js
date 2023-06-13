@@ -23,12 +23,13 @@ const NavBar = ({ blurValue, setblurValue, visible, setVisible }) => {
 
     }
 
-    const navLinkChange = () => {
+    const navLinkChange = (event) => {
         const navLinks = document.getElementsByClassName('nav-link');
         const navLinksArray = Array.from(navLinks);
         navLinksArray.forEach((navLink) => {
             navLink.classList.remove('active')
         });
+        event.target.classList.add('active');
         if (window.innerWidth <= 991) {
             document.getElementById("navbar-toggler").click()
         }
@@ -45,7 +46,7 @@ const NavBar = ({ blurValue, setblurValue, visible, setVisible }) => {
                     <div className="navbar-nav">
                         <Link className="nav-link fw-bold active" to="/react_simple_ecommerce" onClick={navLinkChange} >Hot sales</Link>
                         <Link className="nav-link fw-bold" to='/aboutus' onClick={navLinkChange} >About Us</Link>
-                        <Link className="nav-link fw-bold" to="/cart" onClick={navLinkChange}>Cart details</Link>
+                        <Link className="nav-link fw-bold" to="/joinus" onClick={navLinkChange}>Join Us</Link>
                         <Link className="nav-link fw-bold" to="/account" onClick={navLinkChange}>Account
                             <i className="fa-solid fa-user fs-5 ms-1"></i>
                         </Link>
