@@ -1,15 +1,20 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-const NavBar = ({ blurValue, setblurValue, visible, setVisible }) => {
+const NavBar = ({ blurValue, setblurValue, visible, setVisible, setSearchKey, setFoundItems }) => {
 
     const [visible2, setVisible2] = useState(true);
     const searchBarChange = () => {
         if (visible === false) {
             setVisible(true)
             setblurValue(10)
+            setSearchKey('')
+            setFoundItems([])
         }
     }
+
+    const location = useLocation();
 
     const searchBtnHide = () => {
         if (visible2) {
@@ -44,10 +49,10 @@ const NavBar = ({ blurValue, setblurValue, visible, setVisible }) => {
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div className="navbar-nav">
-                        <Link className="nav-link fw-bold active" to="/react_simple_ecommerce" onClick={navLinkChange} >Hot sales</Link>
-                        <Link className="nav-link fw-bold" to='/aboutus' onClick={navLinkChange} >About Us</Link>
-                        <Link className="nav-link fw-bold" to="/joinus" onClick={navLinkChange}>Join Us</Link>
-                        <Link className="nav-link fw-bold" to="/account" onClick={navLinkChange}>Account
+                        <Link className={`nav-link fw-bold ${location.pathname === '/react_simple_ecommerce' ? 'active' : ''}`} to="/react_simple_ecommerce" onClick={navLinkChange} >Hot sales</Link>
+                        <Link className={`nav-link fw-bold ${location.pathname === '/aboutus' ? 'active' : ''}`} to='/aboutus' onClick={navLinkChange} >About Us</Link>
+                        <Link className={`nav-link fw-bold ${location.pathname === '/joinus' ? 'active' : ''}`} to="/joinus" onClick={navLinkChange}>Join Us</Link>
+                        <Link className={`nav-link fw-bold ${location.pathname === '/account' ? 'active' : ''}`} to="/account" onClick={navLinkChange}>Account
                             <i className="fa-solid fa-user fs-5 ms-1"></i>
                         </Link>
                     </div>

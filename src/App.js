@@ -47,12 +47,19 @@ function App() {
   const [imgSrc, setImgSrc] = useState('')
   const [xCount, setXCount] = useState(1)
   const [cartValue, setCartValue] = useState(0)
+  const [searchKey, setSearchKey] = useState('')
+  const [foundItems, setFoundItems] = useState([])
   return (
     <div className="App container">
 
-      <SearchBar visible={visible} setVisible={setVisible} setblurValue={setblurValue}></SearchBar>
+
       <BrowserRouter>
-        <NavBar blurValue={blurValue} setblurValue={setblurValue} visible={visible} setVisible={setVisible}></NavBar>
+        <SearchBar visible={visible} setVisible={setVisible} setblurValue={setblurValue}
+          searchKey={searchKey} setSearchKey={setSearchKey} allItems={allItems}
+          foundItems={foundItems} setFoundItems={setFoundItems}></SearchBar>
+
+        <NavBar blurValue={blurValue} setblurValue={setblurValue} visible={visible} setVisible={setVisible}
+          setSearchKey={setSearchKey} setFoundItems={setFoundItems}></NavBar>
 
         <Routes>
           <Route path='/react_simple_ecommerce' element={<HotSales blurValue={blurValue} cartItem={cartItem}
@@ -74,11 +81,11 @@ function App() {
         <CartBtn cartItem={cartItem} setCartItem={setCartItem} cartItemId={cartItemId}
           setCartItemId={setCartItemId} allItems={allItems} imgSrc={imgSrc} setImgSrc={setImgSrc} setXCount={setXCount}
           cartValue={cartValue} setCartValue={setCartValue}></CartBtn>
+
+        <BttBtn></BttBtn>
+
       </BrowserRouter>
 
-
-
-      <BttBtn></BttBtn>
 
     </div>
   );

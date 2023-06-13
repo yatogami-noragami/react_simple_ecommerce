@@ -1,13 +1,16 @@
 
 const Joinus = ({ blurValue }) => {
+    const handleSubmit = () => {
+
+    }
     return <>
-        <div className="row mt-5">
+        <div className="row my-5">
             <div className="col-md-10 offset-md-1 my-5 p-5"
                 style={{ filter: `blur(${blurValue}px)` }}>
                 <div className="row">
-                    <h3 className=" text-center text-secondary fw-bolder">
+                    <h5 className=" text-center text-secondary fw-bolder">
                         <span className=" text-danger fs-1">Join us</span> and become part of our vibrant e-commerce community! Discover endless possibilities, shop with confidence, and enjoy exclusive benefits. With our wide range of products, exceptional customer service, and secure transactions, we invite you to embark on a seamless and rewarding shopping experience.
-                    </h3>
+                    </h5>
                 </div>
 
                 <div className="row mt-5">
@@ -36,7 +39,7 @@ const Joinus = ({ blurValue }) => {
                             </a>
                         </div>
 
-                        <form className=" w-100" id="emailForm">
+                        <form className=" w-100" id="emailForm" onSubmit={handleSubmit}>
                             <div className=" input-group">
 
                                 <input type="email" className=" form-control p-2 fw-bold" placeholder="email address" />

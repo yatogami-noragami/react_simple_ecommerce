@@ -2,7 +2,7 @@
 
 const Aboutus = ({ blurValue }) => {
     return <>
-        <div className="row mt-5">
+        <div className="row my-5">
             <div className="col-md-10 offset-md-1 my-5 p-5"
                 style={{ filter: `blur(${blurValue}px)` }}>
 

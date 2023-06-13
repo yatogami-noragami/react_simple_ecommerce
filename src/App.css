@@ -11,10 +11,6 @@ body {
   background-color: black;
 }
 
-/* .ParentCon {
-  height: 2000px;
-} */
-
 .nav-link {
   color: darkred;
   position: relative;
@@ -113,6 +109,9 @@ body {
 #cartBtn:hover {
   box-shadow: 0 0 50px 15px #ffff00;
 }
+
+
+
 
 #bttbtn {
   position: fixed;
