@@ -66,7 +66,8 @@ function App() {
             setCartItem={setCartItem} cartItemId={cartItemId} setCartItemId={setCartItemId} allItems={allItems}
             setXCount={setXCount} cartValue={cartValue} setCartValue={setCartValue} />} />
 
-          <Route path='/aboutus' element={<Aboutus blurValue={blurValue} />} />
+          <Route path='/react_simple_ecommerce/aboutus' element={<Aboutus blurValue={blurValue} />} />
+
           <Route path='/joinus' element={<Joinus blurValue={blurValue} />} />
 
 
